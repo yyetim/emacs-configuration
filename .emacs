@@ -1,7 +1,7 @@
 ;; library, auto-save, backup paths
 (setq backup-directory-alist (quote ((".*" . "~/.emacs.mine/"))))
 (setq tramp-auto-save-directory "~/.emacs.mine/")
-(add-to-list 'load-path "~/elisp")
+(add-to-list 'load-path "~/emacs_configuration/elisp")
 
 ;; system-dependent setup and latex
 (add-hook 'latex-mode-hook '(lambda ()
