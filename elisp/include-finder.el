@@ -1,14 +1,18 @@
 ;; Author: Yavuz Yetim
 
 
-(defvar find-header-file-header-file-prefixes (list ""
- 						    ))
+(defvar find-header-file-header-file-prefixes nil)
 
 (defun log (string)
   (let ((old-buffer (current-buffer)))
     (switch-to-buffer "my-debug-log")
     (insert string)
     (switch-to-buffer old-buffer)))
+(defun log-list-rec (string-list)
+  (if (null string-list)
+      nil
+    (log (concat (car string-list) " "))
+    (log-list-rec (cdr string-list))))
 
 (defun add-path (path)
   (interactive "sPath: ")
@@ -24,10 +28,16 @@
 	(concat (buffer-string) "/"))))
 
 (defun find-header-file-on-path (prefix-list filename)
-  (if (null (car prefix-list))
-      nil
+  (log-list-rec prefix-list)
+  (if (null prefix-list)
+      (progn
+	(log "NULL\n")
+	nil)
     (if (file-exists-p (concat (get-remote-prefix) (car prefix-list) filename))
-    	(concat (car prefix-list) filename)
+	(progn
+	  (log (concat "EXISTS:" (car prefix-list) filename))
+	  (concat (car prefix-list) filename))
+      (log (concat "DOES NOT EXIST:" (car prefix-list) filename "\n"))
      (find-header-file-on-path (cdr prefix-list) filename))))
 
 (defun replace-regexp-uninteractive (regexp to-string)
@@ -106,13 +116,21 @@
 
   ;; prompt for search
   (interactive "sSearch in headers: ")
+
   (if (get-buffer "*results*")
       (kill-buffer "*results*"))
   (let ((search-word-buffer-name (buffer-file-name)))
     (with-temp-buffer
       (insert-string search-word-buffer-name)
       (replace-regexp-uninteractive ".*:" "")
+      (setq search-word-file-name (buffer-string))
+      (replace-regexp-uninteractive "\\(.*\\)/[^/]*" "\\1")
+      (setq search-word-directory-name (buffer-string))
+      (kill-region (point-min) (point-max))
+      (insert-string search-word-file-name)
+      (replace-regexp-uninteractive ".*/\\([^/]*\\)" "\\1")
       (setq search-word-file-name (buffer-string))))
+  (add-path search-word-directory-name)
   (search-string-in-headers word search-word-file-name)
   (if (string= (buffer-name) "*results*")
       (grep-mode))
