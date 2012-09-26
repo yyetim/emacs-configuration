@@ -28,17 +28,11 @@
 	(concat (buffer-string) "/"))))
 
 (defun find-header-file-on-path (prefix-list filename)
-  (log-list-rec prefix-list)
   (if (null prefix-list)
-      (progn
-	(log "NULL\n")
-	nil)
+      nil
     (if (file-exists-p (concat (get-remote-prefix) (car prefix-list) filename))
-	(progn
-	  (log (concat "EXISTS:" (car prefix-list) filename))
-	  (concat (car prefix-list) filename))
-      (log (concat "DOES NOT EXIST:" (car prefix-list) filename "\n"))
-     (find-header-file-on-path (cdr prefix-list) filename))))
+	(concat (car prefix-list) filename)
+      (find-header-file-on-path (cdr prefix-list) filename))))
 
 (defun replace-regexp-uninteractive (regexp to-string)
   (save-excursion
