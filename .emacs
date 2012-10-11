@@ -25,6 +25,7 @@
 (autoload 'column-marker-1 "column-marker" "Highlight a column." t)
 (setq desktop-files-not-to-save "^$")
 (setq c-default-style "linux" c-basic-offset 8)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
 ;; cscope stuff
 (if (featurep 'xcscope)
