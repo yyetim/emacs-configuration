@@ -31,10 +31,6 @@
 (if (featurep 'xcscope)
       (setq cscope-do-not-update-database t))
 
-;; this works for all systems and speed is usually faster when control
-;; master is globally enabled
-(setq tramp-default-method "sshx")
-
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
