@@ -26,6 +26,7 @@
 (setq desktop-files-not-to-save "^$")
 (setq c-default-style "linux" c-basic-offset 8)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(set-fill-column 80)
 
 ;; cscope stuff
 (if (featurep 'xcscope)
