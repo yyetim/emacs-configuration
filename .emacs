@@ -8,7 +8,7 @@
 			      (load-library "latex-compile-preview")))
 (add-hook 'c-mode-common-hook '(lambda ()
 				 (column-marker-1 80)
-				 (set-fill-column 80)))
+				 (set-fill-column 79)))
 (load-library (symbol-name system-type))
 
 ;; vim-like include file search, uses local shell and grep
