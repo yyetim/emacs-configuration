@@ -7,7 +7,8 @@
 (add-hook 'latex-mode-hook '(lambda ()
 			      (load-library "latex-compile-preview")))
 (add-hook 'c-mode-common-hook '(lambda ()
-				 (column-marker-1 80)))
+				 (column-marker-1 80)
+				 (set-fill-column 80)))
 (load-library (symbol-name system-type))
 
 ;; vim-like include file search, uses local shell and grep
@@ -26,7 +27,6 @@
 (setq desktop-files-not-to-save "^$")
 (setq c-default-style "linux" c-basic-offset 8)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-(set-fill-column 80)
 
 ;; cscope stuff
 (if (featurep 'xcscope)
