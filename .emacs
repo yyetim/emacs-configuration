@@ -28,6 +28,30 @@
 (setq c-default-style "linux" c-basic-offset 8)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
+;; full-screen
+(defvar my-fullscreen-p t "Check if fullscreen is on or off")
+(defun my-non-fullscreen ()
+    (interactive)
+      (if (fboundp 'w32-send-sys-command)
+	    ;; WM_SYSCOMMAND restore #xf120
+	    (w32-send-sys-command 61728)
+	(set-frame-parameter nil 'fullscreen 'fullheight)))
+(defun my-fullscreen ()
+    (interactive)
+      (if (fboundp 'w32-send-sys-command)
+	    ;; WM_SYSCOMMAND maximaze #xf030
+	    (w32-send-sys-command 61488)
+	(progn
+	  (setq non-fullscreen-size (frame-parameter nil 'width))
+	  (set-frame-parameter nil 'fullscreen 'fullboth))))
+(defun my-toggle-fullscreen ()
+    (interactive)
+      (setq my-fullscreen-p (not my-fullscreen-p))
+        (if my-fullscreen-p
+	      (my-non-fullscreen)
+	  (my-fullscreen)))
+(global-set-key (kbd "<f11>") 'my-toggle-fullscreen)
+
 ;; cscope stuff
 (if (featurep 'xcscope)
       (setq cscope-do-not-update-database t))
