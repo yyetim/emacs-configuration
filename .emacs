@@ -19,7 +19,7 @@
 (setq-default save-place t)
 
 ;; setup tabbar if it is available
-(if (featurep 'tabbar)
+(when (require 'tabbar nil 'noerror)
     (progn (tabbar-mode t)
 	   (defun tabbar-add-tab (tabset object &optional append_ignored)
 	     "Add to TABSET a tab with value OBJECT if there isn't one there yet.
