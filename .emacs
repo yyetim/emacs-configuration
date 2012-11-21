@@ -40,6 +40,7 @@
 		   (let ((dir (expand-file-name (concat default-directory "/.."))))
 		     (cond ((member (buffer-name) '("*Completions*"
 						    "*scratch*"
+						    "*Calendar*"
 						    "*Messages*"
 						    "*Ediff Registry*"))
 			    (list "#misc"))
