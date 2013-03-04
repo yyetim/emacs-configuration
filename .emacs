@@ -18,6 +18,36 @@
 (require 'saveplace)
 (setq-default save-place t)
 
+;; setup tabbar if it is available
+(when (require 'tabbar nil 'noerror)
+    (progn (tabbar-mode t)
+	   (defun tabbar-add-tab (tabset object &optional append_ignored)
+	     "Add to TABSET a tab with value OBJECT if there isn't one there yet.
+ If the tab is added, it is added at the beginning of the tab list,
+ unless the optional argument APPEND is non-nil, in which case it is
+ added at the end."
+	     (let ((tabs (tabbar-tabs tabset)))
+	       (if (tabbar-get-tab object tabset)
+		   tabs
+		 (let ((tab (tabbar-make-tab object tabset)))
+		   (tabbar-set-template tabset nil)
+		   (set tabset (sort (cons tab tabs)
+				     (lambda (a b)
+				       (string< (buffer-name (car a))
+						(buffer-name (car b))))))))))
+	   (setq tabbar-buffer-groups-function
+		 (lambda()
+		   (let ((dir (expand-file-name (concat default-directory "/.."))))
+		     (cond ((member (buffer-name) '("*Completions*"
+						    "*scratch*"
+						    "*Calendar*"
+						    "*Messages*"
+						    "*Ediff Registry*"))
+			    (list "#misc"))
+			   ((string-match-p "/.emacs.d/" dir)
+			    (list ".emacs.d"))
+			   (t (list dir))))))))
+
 ;; misc
 (setq ring-bell-function 'ignore)
 (add-to-list 'auto-mode-alist '("\\.str$" . c++-mode))
