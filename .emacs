@@ -10,6 +10,7 @@
 				 (column-marker-1 80)
 				 (set-fill-column 79)))
 (load-library (symbol-name system-type))
+(load "haskell-mode/haskell-site-file")
 
 ;; vim-like include file search, uses local shell and grep
 (autoload 'search-this-word-in-headers "include-finder" nil t nil)
