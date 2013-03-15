@@ -21,6 +21,7 @@
 
 ;; tabbar
 (require 'tabbar)
+(tabbar-mode)
 (defun my-tabbar-buffer-groups () ;; customize to show all normal files in one group
   "Returns the name of the tab group names the current buffer belongs to.
  There are two groups: Emacs buffers (those whose name starts with -*-, plus
