@@ -71,7 +71,7 @@
   ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(inhibit-startup-screen t)
- '(org-agenda-files (quote ("/sat:/u/yyetim/notes.org")))
+ '(org-agenda-files (quote ("/sat.ee.princeton.edu:/u/yyetim/notes.org")))
  '(recentf-mode t)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
