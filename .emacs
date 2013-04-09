@@ -22,6 +22,7 @@
 ;; tabbar
 (require 'tabbar)
 (tabbar-mode)
+
 (defun my-tabbar-buffer-groups () ;; customize to show all normal files in one group
   "Returns the name of the tab group names the current buffer belongs to.
  There are two groups: Emacs buffers (those whose name starts with -*-, plus
@@ -90,8 +91,4 @@
  '(tool-bar-mode nil)
  '(which-function-mode t))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+ '(tabbar-selected ((t (:inherit tabbar-default :inverse-video t :box (:line-width 1 :color "white" :style pressed-button))))))
