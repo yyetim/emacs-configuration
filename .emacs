@@ -91,4 +91,5 @@
  '(tool-bar-mode nil)
  '(which-function-mode t))
 (custom-set-faces
+ '(tabbar-default ((t (:inherit variable-pitch :background "gray75" :foreground "gray50" :height 0.9))))
  '(tabbar-selected ((t (:inherit tabbar-default :inverse-video t :box (:line-width 1 :color "white" :style pressed-button))))))
