@@ -22,17 +22,8 @@
 ;; tabbar
 (require 'tabbar)
 (tabbar-mode)
+(load-library "tabbar-config")
 
-(defun my-tabbar-buffer-groups () ;; customize to show all normal files in one group
-  "Returns the name of the tab group names the current buffer belongs to.
- There are two groups: Emacs buffers (those whose name starts with -*-, plus
- dired buffers), and the rest.  This works at least with Emacs v24.2 using
- tabbar.el v1.7."
-  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
-	      ((eq major-mode 'dired-mode) "emacs")
-	      (t "user"))))
-(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
- 
 ;; misc
 (setq ring-bell-function 'ignore)
 (add-to-list 'auto-mode-alist '("\\.str$" . c++-mode))
@@ -90,6 +81,3 @@
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(which-function-mode t))
-(custom-set-faces
- '(tabbar-default ((t (:inherit variable-pitch :background "gray75" :foreground "gray50" :height 0.9))))
- '(tabbar-selected ((t (:inherit tabbar-default :inverse-video t :box (:line-width 1 :color "white" :style pressed-button))))))
