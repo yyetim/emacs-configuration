@@ -33,6 +33,7 @@
 (setq desktop-files-not-to-save "^$")
 (setq c-default-style "linux" c-basic-offset 8)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(setq parens-require-spaces nil)
 
 ;; full-screen
 (defvar my-fullscreen-p t "Check if fullscreen is on or off")
