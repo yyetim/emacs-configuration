@@ -9,7 +9,8 @@
 (add-hook 'c-mode-common-hook '(lambda ()
 				 (column-marker-1 80)
 				 (set-fill-column 79)
-				 (defun fill-newline() (newline-and-indent))))
+				 (defun fill-newline() (newline-and-indent))
+				 (local-set-key (kbd "M-q") 'fill-region)))
 (load-library (symbol-name system-type))
 (load "haskell-mode/haskell-site-file")
 
