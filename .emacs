@@ -26,7 +26,7 @@
 
 ;; misc
 (setq ring-bell-function 'ignore)
-(add-to-list 'auto-mode-alist '("\\.str$" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.str$" . java-mode))
 (global-set-key (kbd "RET") 'newline-and-indent)
 (add-hook 'dired-mode-hook '(lambda () (local-set-key [mouse-2] 'dired-find-file)))
 (autoload 'column-marker-1 "column-marker" "Highlight a column." t)
