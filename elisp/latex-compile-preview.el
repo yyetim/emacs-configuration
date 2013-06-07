@@ -8,7 +8,7 @@
 (if (eq 'windows-nt system-type)
     (setq local-pdf-viewer "/cygdrive/c/Program\\ Files\\ \\(x86\\)/Adobe/Reader\\ 10.0/Reader/AcroRd32.exe")
   (if (eq 'gnu/linux system-type)
-      (setq local-pdf-viewer "evince")
+      (setq local-pdf-viewer "xdg-open")
     (if (eq 'darwin system-type)
 	(setq local-pdf-viewer "open"))))
 
