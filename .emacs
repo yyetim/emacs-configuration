@@ -22,9 +22,9 @@
 (setq-default save-place t)
 
 ;; tabbar
-(require 'tabbar)
-(tabbar-mode)
-(load-library "tabbar-config")
+;; (require 'tabbar)
+;; (tabbar-mode)
+;; (load-library "tabbar-config")
 
 ;; misc
 (setq ring-bell-function 'ignore)
