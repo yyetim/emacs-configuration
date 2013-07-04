@@ -11,6 +11,8 @@
 				 (set-fill-column 79)
 				 (defun fill-newline() (newline-and-indent))
 				 (local-set-key (kbd "M-q") 'fill-region)))
+(add-hook 'java-mode-hook '(lambda ()
+			     (setq-default c-basic-offset 4)))
 (load-library (symbol-name system-type))
 (load "haskell-mode/haskell-site-file")
 
