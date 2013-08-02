@@ -11,6 +11,8 @@
 				 (set-fill-column 79)
 				 (defun fill-newline() (newline-and-indent))
 				 (local-set-key (kbd "M-q") 'fill-region)))
+(add-hook 'java-mode-hook '(lambda ()
+			     (setq-default c-basic-offset 4)))
 (load-library (symbol-name system-type))
 (load "haskell-mode/haskell-site-file")
 
@@ -36,6 +38,14 @@
 (setq c-default-style "linux" c-basic-offset 8)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (setq parens-require-spaces nil)
+
+;; -diff from commandline
+(defun command-line-diff (switch)
+  (let ((file1 (pop command-line-args-left))
+	(file2 (pop command-line-args-left)))
+    (ediff file1 file2)))
+
+(add-to-list 'command-switch-alist '("diff" . command-line-diff))
 
 ;; full-screen
 (defvar my-fullscreen-p t "Check if fullscreen is on or off")
