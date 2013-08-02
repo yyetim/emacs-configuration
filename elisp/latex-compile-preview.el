@@ -17,10 +17,9 @@
 		'(lambda ()
 		   (interactive)
 		   (dired-copy-file (concat default-directory "main.pdf") (concat temporary-file-directory "main.pdf") t)
-		   (with-temp-buffer
-		     (start-process-shell-command
-		      "latex-preview" "*latex-preview*"
-		      (concat local-pdf-viewer " " temporary-file-directory "main.pdf")))))
+		   (start-process-shell-command
+		    "latex-preview" "*latex-preview*"
+		    (concat local-pdf-viewer " " temporary-file-directory "main.pdf"))))
 
 (global-set-key (kbd "C-c c") '(lambda ()
 				 (interactive)
