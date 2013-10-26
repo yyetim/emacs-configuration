@@ -26,6 +26,11 @@
 (require 'saveplace)
 (setq-default save-place t)
 
+;; windows
+(require 'windows)
+(win:startup-with-window)
+(define-key ctl-x-map "C" 'see-you-again)
+
 ;; tabbar
 ;; (require 'tabbar)
 ;; (tabbar-mode)
