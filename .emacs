@@ -26,10 +26,17 @@
 (require 'saveplace)
 (setq-default save-place t)
 
-;; windows
+;; windows (redefine switch mappings)
 (require 'windows)
 (win:startup-with-window)
 (define-key ctl-x-map "C" 'see-you-again)
+(global-set-key (kbd "<f1>") '(lambda () (interactive) (win-switch-to-window 1 1)))
+(global-set-key (kbd "<f2>") '(lambda () (interactive) (win-switch-to-window 1 2)))
+(global-set-key (kbd "<f3>") '(lambda () (interactive) (win-switch-to-window 1 3)))
+(global-set-key (kbd "<f4>") '(lambda () (interactive) (win-switch-to-window 1 4)))
+(global-set-key (kbd "<f5>") '(lambda () (interactive) (win-switch-to-window 1 5)))
+(global-set-key (kbd "<f6>") '(lambda () (interactive) (win-switch-to-window 1 6)))
+
 
 ;; tabbar
 ;; (require 'tabbar)
