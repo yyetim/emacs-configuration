@@ -13,5 +13,5 @@
                        ("-B" "-d" "english" "--dict-dir"
                         "/Library/Application Support/cocoAspell/aspell6-en-6.0-0")
                        nil iso-8859-1)))
-        `((nil ,@default)
+        '((nil ,@default)
           ("english" ,@default))))
