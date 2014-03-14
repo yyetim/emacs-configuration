@@ -15,3 +15,4 @@
 (add-hook 'outline-minor-mode-hook
 	  (lambda () (local-set-key "\C-c\C-c"
 				    outline-mode-prefix-map)))
+(global-set-key (kbd "C-<tab>") 'outline-toggle-children)
