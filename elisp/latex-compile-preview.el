@@ -1,16 +1,16 @@
 ;; Yavuz Yetim
 ;; Assumes a Makefile that produces main.pdf
-;; Compile with make
+;; Compile with make using C-c and display using C-p
 ;;   on cygwin use adobe to display file
-;;   on linux use xdg-open
+;;   on linux use evince
 ;;   on darwin use open
 
-(if (eq 'windows-nt system-type)
-    (setq local-pdf-viewer "/cygdrive/c/Program\\ Files\\ \\(x86\\)/Adobe/Reader\\ 10.0/Reader/AcroRd32.exe")
-  (if (eq 'gnu/linux system-type)
-      (setq local-pdf-viewer "xdg-open")
-    (if (eq 'darwin system-type)
-	(setq local-pdf-viewer "open"))))
+(setq local-pdf-viewer
+      (cond
+       ((eq 'windows-nt system-type)
+	"/cygdrive/c/Program\\ Files\\ \\(x86\\)/Adobe/Reader\\ 10.0/Reader/AcroRd32.exe")
+       ((eq 'gnu/linux system-type) "evince")
+       ((eq 'darwin system-type) "open")))
 
 (require 'dired)
 (global-set-key (kbd "C-c p")
