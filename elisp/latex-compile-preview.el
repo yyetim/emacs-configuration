@@ -9,7 +9,7 @@
       (cond
        ((eq 'windows-nt system-type)
 	"/cygdrive/c/Program\\ Files\\ \\(x86\\)/Adobe/Reader\\ 10.0/Reader/AcroRd32.exe")
-       ((eq 'gnu/linux system-type) "evince")
+       ((eq 'gnu/linux system-type) "okular")
        ((eq 'darwin system-type) "open")))
 
 (require 'dired)
