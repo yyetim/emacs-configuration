@@ -23,6 +23,9 @@
 (autoload 'search-this-word-in-headers "include-finder" nil t nil)
 (autoload 'add-path "include-finder" nil t nil)
 
+(require 'undo-tree)
+(global-undo-tree-mode 1)
+
 (require 'saveplace)
 (setq-default save-place t)
 
@@ -98,6 +101,10 @@
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
 
+(defun setup-org-todo ()
+  (interactive)
+  (setq org-agenda-files (quote ("/sat.ee.princeton.edu:/u/yyetim/notes.org"))))
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -105,7 +112,6 @@
   ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(inhibit-startup-screen t)
- '(org-agenda-files (quote ("/sat:/u/yyetim/notes.org")))
  '(recentf-mode t)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
