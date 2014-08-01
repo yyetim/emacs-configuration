@@ -3,7 +3,7 @@
 (setenv "PATH" (concat "c:/cygwin/bin;" (getenv "PATH")))
 (setq exec-path (cons "c:/cygwin/bin/" exec-path))
 
-(setq tramp-default-method "plink")
+(setq tramp-default-method "psftp")
 ;; (require 'cygwin-mount)
 ;; (cygwin-mount-activate)
 
