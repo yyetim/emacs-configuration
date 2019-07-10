@@ -2,6 +2,8 @@
 (setq backup-directory-alist (quote ((".*" . "~/.emacs.mine/"))))
 (setq tramp-auto-save-directory "~/.emacs.mine/")
 (add-to-list 'load-path "~/emacs-configuration/elisp")
+(add-to-list 'load-path "~/emacs-configuration/elisp/fzf.el")
+(require 'fzf)
 
 ;; system-dependent setup and latex
 (add-hook 'c-mode-common-hook '(lambda ()
