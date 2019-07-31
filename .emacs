@@ -98,9 +98,12 @@
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
 
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-)
+(defun start-tmux-session-server()
+  (interactive)
+  (set-variable
+   'server-name
+   (replace-regexp-in-string
+    "\n$"
+    ""
+    (shell-command-to-string "tmux display-message -p '#S'")))
+  (server-start))
