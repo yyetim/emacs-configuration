@@ -1,7 +1,8 @@
 ;; library, auto-save, backup paths
-(setq backup-directory-alist (quote ((".*" . "~/.emacs.mine/"))))
-(setq tramp-auto-save-directory "~/.emacs.mine/")
-(add-to-list 'load-path "~/emacs-configuration/elisp")
+(setq emacs-backup-mine-path (expand-file-name "~/.emacs.mine/"))
+;(setq backup-directory-alist (quote ((".*" . emacs-backup-mine-path))))
+(setq tramp-auto-save-directory emacs-backup-mine-path)
+(add-to-list 'load-path (expand-file-name "~/emacs-configuration/elisp"))
 
 ;; system-dependent setup and latex
 (add-hook 'c-mode-common-hook '(lambda ()
@@ -22,6 +23,8 @@
 
 (require 'undo-tree)
 (global-undo-tree-mode 1)
+
+(global-auto-revert-mode t)
 
 (require 'saveplace)
 (setq-default save-place t)
@@ -46,7 +49,6 @@
 ;; misc
 (setq ring-bell-function 'ignore)
 (add-to-list 'auto-mode-alist '("\\.str$" . java-mode))
-(global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; Easier jumping around the windows
 (global-set-key (kbd "C-x O") '(lambda () (interactive) (other-window -1)))
